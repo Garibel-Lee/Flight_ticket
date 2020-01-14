@@ -44,8 +44,7 @@ public class UserDAOImpl implements UserDAO{
 	
 	
 	public int update(User obj) {
-		return JdbcTemplate.update("insert into passenger_info (p_name,p_pwd) values(?,?)",obj.getP_name(),obj.getP_pwd());
-		
+		return JdbcTemplate.update("update passenger_info set p_pwd=?,p_number=? where p_name=?",obj.getP_pwd(),obj.getP_number(),obj.getP_name());
 	}
 
 	public int delete(int id) {

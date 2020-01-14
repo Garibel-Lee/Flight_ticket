@@ -260,7 +260,7 @@ public class ManagerFunction {
 	}
 
 	/**
-	 * 不用写了
+	 * 不用写了已经y
 	 */
 	public static void getFlight() {
 

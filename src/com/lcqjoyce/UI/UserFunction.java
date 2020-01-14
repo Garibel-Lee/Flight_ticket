@@ -12,7 +12,9 @@ import com.lcqjoyce.service.OrderService;
 import com.lcqjoyce.service.impl.FlightServiceImpl;
 import com.lcqjoyce.service.impl.OrderServiceImpl;
 import com.lcqjoyce.utils.DateUtil;
+import com.lcqjoyce.utils.MD5;
 import com.lcqjoyce.utils.MyScanner;
+import com.lcqjoyce.utils.Regular;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -219,29 +221,46 @@ public class UserFunction {
 	public void updateUser() {
 		User current = threadlocal.get();
 		System.out.println(current.toString());
-		int item;
+		current.toString();
+		int item = 0;
 		do {
-			System.out.println("请输入你修改类别");
-			item = new MyScanner().getInt();
-			switch (item) {
-			case 1:
+			while (true) {
+				System.out.println("请输入你修改类别，只能修改1为密码或者2为手机号");
+				try {
+					item = new MyScanner().getInt();
+				} catch (Exception e) {
+					System.out.println("输入有误请输入一个有效数字");
+					continue;
+				}
 
-				break;
-			case 2:
-
-				break;
-			case 3:
-
-				break;
-			case 4:
-
-				break;
-			case 5:
-
-				break;
-			default:
-				System.out.println("输入有误!");
-				break;
+				switch (item) {
+				case 1:
+					System.out.print("请输入密码:");
+					String password = new MyScanner().getString();
+					System.out.print("确认密码:");
+					String password2 = new MyScanner().getString();
+					while (!password.equals(password2)) {
+						System.out.println("两次密码输入不一致!");
+						System.out.print("请输入密码:");
+						password = new MyScanner().getString();
+						System.out.print("确认密码:");
+						password2 = new MyScanner().getString();
+					}
+					current.setP_pwd(MD5.encode(password));
+					System.out.println(new UserDAOImpl().update(current));
+					break;
+				case 2:
+					System.out.print("请输入手机号:");
+					String tel = new MyScanner().getString();
+					if(Regular.IsTelephone(tel)) {
+						System.out.println("手机号码格式");
+					}
+					current.setP_number(tel);
+					System.out.println(new UserDAOImpl().update(current));
+					break;
+				default:
+					break;
+				}
 			}
 
 		} while ("y".equalsIgnoreCase(new MyScanner().getString()));

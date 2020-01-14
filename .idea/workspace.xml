@@ -6,7 +6,32 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd42b10d-6bfa-4495-9a6a-0bf02e1553f0" name="Default Changelist" comment="" />
+    <list default="true" id="fd42b10d-6bfa-4495-9a6a-0bf02e1553f0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/Background.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/Background.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/ManagerFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/ManagerFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/Manager_Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/Manager_Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/UserFunction.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/UserFunction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/User_Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/UI/User_Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/ManagerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/ManagerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/PlaneDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/PlaneDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/ManagerDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/ManagerDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/PlaneDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/PlaneDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/UserDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/dao/impl/UserDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/domain/Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/domain/Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/domain/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/FlightService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/FlightService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/ManagerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/ManagerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/UserLoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/UserLoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/FlightServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/FlightServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/ManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/ManagerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/service/impl/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/com/lcqjoyce/utils/JdbcTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/lcqjoyce/utils/JdbcTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lcqjoyce/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lcqjoyce/Background.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +42,9 @@
   </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -39,6 +67,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/jre" />
@@ -52,7 +81,20 @@
       <recent name="D:\Workspace\eclipse\Flight_ticket\lib" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Background">
+    <configuration name="Background" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lcqjoyce.Background" />
+      <module name="Flight_ticket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lcqjoyce.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lcqjoyce.Client" />
       <module name="Flight_ticket" />
@@ -68,6 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Background" />
         <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
@@ -99,6 +142,7 @@
       <workItem from="1578917211105" duration="2117000" />
       <workItem from="1578963653510" duration="383000" />
       <workItem from="1578967809482" duration="3382000" />
+      <workItem from="1578989847189" duration="1503000" />
     </task>
     <servers />
   </component>
@@ -130,22 +174,22 @@
       <screen x="0" y="0" width="1152" height="720" />
     </state>
     <state x="330" y="97" key="FileChooserDialogImpl/0.0.1152.720@0.0.1152.720" timestamp="1578917377307" />
-    <state width="896" height="159" key="GridCell.Tab.0.bottom" timestamp="1578971200837">
+    <state width="895" height="159" key="GridCell.Tab.0.bottom" timestamp="1578991846810">
       <screen x="0" y="0" width="1152" height="720" />
     </state>
-    <state width="896" height="159" key="GridCell.Tab.0.bottom/0.0.1152.720@0.0.1152.720" timestamp="1578971200837" />
-    <state width="896" height="159" key="GridCell.Tab.0.center" timestamp="1578971200837">
+    <state width="895" height="159" key="GridCell.Tab.0.bottom/0.0.1152.720@0.0.1152.720" timestamp="1578991846810" />
+    <state width="895" height="159" key="GridCell.Tab.0.center" timestamp="1578991846810">
       <screen x="0" y="0" width="1152" height="720" />
     </state>
-    <state width="896" height="159" key="GridCell.Tab.0.center/0.0.1152.720@0.0.1152.720" timestamp="1578971200837" />
-    <state width="896" height="159" key="GridCell.Tab.0.left" timestamp="1578971200836">
+    <state width="895" height="159" key="GridCell.Tab.0.center/0.0.1152.720@0.0.1152.720" timestamp="1578991846810" />
+    <state width="895" height="159" key="GridCell.Tab.0.left" timestamp="1578991846810">
       <screen x="0" y="0" width="1152" height="720" />
     </state>
-    <state width="896" height="159" key="GridCell.Tab.0.left/0.0.1152.720@0.0.1152.720" timestamp="1578971200836" />
-    <state width="896" height="159" key="GridCell.Tab.0.right" timestamp="1578971200837">
+    <state width="895" height="159" key="GridCell.Tab.0.left/0.0.1152.720@0.0.1152.720" timestamp="1578991846810" />
+    <state width="895" height="159" key="GridCell.Tab.0.right" timestamp="1578991846810">
       <screen x="0" y="0" width="1152" height="720" />
     </state>
-    <state width="896" height="159" key="GridCell.Tab.0.right/0.0.1152.720@0.0.1152.720" timestamp="1578971200837" />
+    <state width="895" height="159" key="GridCell.Tab.0.right/0.0.1152.720@0.0.1152.720" timestamp="1578991846810" />
     <state x="-356" y="0" width="1038" height="720" key="SettingsEditor" timestamp="1578969183167">
       <screen x="0" y="0" width="1152" height="720" />
     </state>
