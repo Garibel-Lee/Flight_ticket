@@ -11,16 +11,20 @@ import com.lcqjoyce.utils.JdbcTemplate;
 
 public class PlaneDAOImpl implements PlaneDAO {
 
-	public void save(Plane obj) {
+	public  int save(Plane obj) {
+		String sql = "insert into plane_info (pl_rid ,pl_rsp ,pl_rep ,pl_rst,pl_ret,pl_ps) values(?,?,?,?,?,?)";
+		return JdbcTemplate.update(sql,obj.getPl_rid(),obj.getPl_rsp(),obj.getPl_rep(),
+												obj.getPl_rst(),obj.getPl_ret(),obj.getPl_ps());
+	}
+
+	public int update(Plane obj) {
+		String sql = "update plane_info set pl_rst=?,pl_ret=? where pl_rid=?";
+		return JdbcTemplate.update(sql,obj.getPl_rst(),obj.getPl_ret(),obj.getPl_rid());
 
 	}
 
-	public void update(Plane obj) {
-
-	}
-
-	public void delete(int o_id) {
-
+	public int delete(int pl_rid) {
+		return JdbcTemplate.update("delete from  plane_info  where pl_rid =? ",pl_rid);
 	}
 
 	public Plane get(int o_id) {

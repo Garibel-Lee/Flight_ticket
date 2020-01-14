@@ -11,4 +11,5 @@ public interface UserLoginService {
 	void Register(User user);
 	User login(User user);
 	User updateInfo(User user);
+	
 }

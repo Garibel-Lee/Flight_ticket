@@ -4,6 +4,7 @@ package com.lcqjoyce.utils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
@@ -72,7 +73,8 @@ public class JdbcTemplate {
 			int rs=ps.executeUpdate();
 			logger.info("更新结果："+rs);
 			return rs;			
-		} catch (Exception e) {
+		} catch (SQLException e) {
+			e.getMessage();
 		}finally {
 			JdbcUtil.close(null,ps);
 		}

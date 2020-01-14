@@ -1,20 +1,22 @@
 package com.lcqjoyce.UI;
 
-import com.lcqjoyce.domain.User;
+import com.lcqjoyce.domain.Manager;
+import com.lcqjoyce.service.ManagerService;
 import com.lcqjoyce.service.UserLoginService;
+import com.lcqjoyce.service.impl.ManagerServiceImpl;
 import com.lcqjoyce.service.impl.UserLoginServiceImpl;
 import com.lcqjoyce.utils.MD5;
 import com.lcqjoyce.utils.MyScanner;
 
 public class Manager_Client {
-  	private ThreadLocal<User> threadLocal = new ThreadLocal<User>();
-	private UserLoginService userservice = new UserLoginServiceImpl();
+  	private ThreadLocal<Manager> threadLocal = new ThreadLocal<Manager>();
+	private ManagerService userservice = new ManagerServiceImpl();
 
 	/**
 	 * 后台主页
 	 */
 
-	public void U_index() {
+	public void M_index() {
 		System.out.println();
 		System.out.println("==================欢迎登录飞机页面==================");
 		loginDisplay();	
@@ -29,15 +31,15 @@ public class Manager_Client {
 	 */
 	private void loginDisplay() {
 		System.out.println("==================管理员登录==================");
-		User User = new User();
+		Manager User = new Manager();
 		while (true) {
 			System.out.print("请输入登录名:");
-			User.setP_name(new MyScanner().getString());
+			User.setM_name(new MyScanner().getString());
 			System.out.print("请输入密码:");
-			User.setP_pwd(MD5.encode(new MyScanner().getString()));
+			User.setM_pwd(MD5.encode(new MyScanner().getString()));
 			try {
-				User current = userservice.login(User);
-				if (null != current.getP_id()) {
+				Manager current = userservice.login(User);
+				if (null != current.getM_name()) {
 					System.out.println("登陆成功,跳转到主界面");
 					// 绑定到当前线程
 					threadLocal.set(current);
@@ -50,7 +52,7 @@ public class Manager_Client {
 			System.out.println("y可以返回主界面哦");
 			String flag = new MyScanner().getString();
 			if ("y".equalsIgnoreCase(flag)) {
-				U_index();
+				M_index();
 			}
 		}
 	}
@@ -59,13 +61,13 @@ public class Manager_Client {
 	 * 登陆成功之后进入 管理员空间 管理员空间功能UserFunction loginUser 登录成功的管理员保存
 	 */
 	private void ManagerSpace() {
-		User loginUser = threadLocal.get();
+		Manager loginUser = threadLocal.get();
 		if (null != loginUser) {
 			System.out.println("==================欢迎使用航空购票系统==================");
-			System.out.println("当前登陆管理员: " + loginUser.getP_name());
+			System.out.println("当前登陆管理员: " + loginUser.getM_name());
 			String flag = "y";
 			while ("y".equalsIgnoreCase(flag)) {
-				UserFunction UserFunction = new UserFunction(threadLocal);
+				ManagerFunction ManagerFunction = new ManagerFunction(threadLocal);
 				System.out.println("1.查询航班");
 				System.out.println("2.增加航班");
 				System.out.println("3.更新航班");
@@ -80,7 +82,7 @@ public class Manager_Client {
 				}
 				switch (item) {
 				case 1:
-					ManagerFunction.getFlight();
+					ManagerFunction.queryForFlightInfo();
 					break;
 				case 2:
 					ManagerFunction.addFlight();

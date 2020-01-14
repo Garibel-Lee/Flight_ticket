@@ -6,11 +6,11 @@ import java.util.List;
 import com.lcqjoyce.domain.Plane;
 
 public interface PlaneDAO {
-	void save(Plane obj);
+	int save(Plane obj);
 
-	void update(Plane obj);
+	int update(Plane obj);
 
-	void delete(int o_id);
+	int delete(int o_id);
 
 	public Plane get(int o_id);
 

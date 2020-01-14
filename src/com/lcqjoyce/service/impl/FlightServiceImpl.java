@@ -24,6 +24,13 @@ public class FlightServiceImpl implements FlightService {
 		return p_dao.list();
 	}
 
+	public Plane getFlightRID(int rid) {
+		//查詢航班都是當前的為起飛的
+		
+		return p_dao.get(rid);
+	}
+	
+	
 	
 	public List<Plane> getNoTakeofflist(Order order ) {
 		//查詢航班都是當前的為起飛的

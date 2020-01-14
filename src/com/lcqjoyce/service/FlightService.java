@@ -21,6 +21,7 @@ import java.util.List;
  *
  */
 public interface FlightService {
+	public Plane getFlightRID(int rid) ;
 	/**
 	 * 飞机航班的打印工具
 	 * @param list
