@@ -1,24 +1,24 @@
 package com.lcqjoyce.service.impl;
 
+import com.lcqjoyce.dao.OrderDAO;
+import com.lcqjoyce.dao.PlaneDAO;
+import com.lcqjoyce.dao.impl.OrderDAOImpl;
+import com.lcqjoyce.dao.impl.PlaneDAOImpl;
+import com.lcqjoyce.domain.Order;
+import com.lcqjoyce.domain.Plane;
+import com.lcqjoyce.service.OrderService;
+import com.lcqjoyce.utils.DateUtil;
+import com.lcqjoyce.utils.Transaction;
+import org.apache.log4j.Logger;
+
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.log4j.Logger;
-
-import com.lcqjoyce.dao.OrderDAO;
-import com.lcqjoyce.dao.PlaneDAO;
 //import com.lcqjoyce.dao.UserDAO;
-import com.lcqjoyce.dao.impl.OrderDAOImpl;
-import com.lcqjoyce.dao.impl.PlaneDAOImpl;
 //import com.lcqjoyce.dao.impl.UserDAOImpl;
-import com.lcqjoyce.domain.Order;
-import com.lcqjoyce.domain.Plane;
 //import com.lcqjoyce.domain.User;
-import com.lcqjoyce.service.OrderService;
-import com.lcqjoyce.utils.DateUtil;
 //import com.lcqjoyce.utils.JdbcUtil;
-import com.lcqjoyce.utils.Transaction;
 
 public class OrderServiceImpl implements OrderService {
 	private PlaneDAO p_dao = new PlaneDAOImpl();
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 	public void viewOrder(List<Order> list) {
 
 		for (Order ps : list) {
-
+		
 			System.out.print("订单号  ：" + ps.getO_number() + "\t");
 			System.out.print("舱位级别    ：" + ps.getO_sslevel() + "\t");
 			System.out.print("舱位价格    	： " + ps.getO_price() + "\t");
@@ -97,6 +97,7 @@ public class OrderServiceImpl implements OrderService {
 					try {
 						new Transaction().beginTransaction();
 						logger.info("开启事务");
+						order.setO_rid(pl_rid);
 						o_dao.update(order);
 						// 原航班余票+1,该次航班余票-1
 						p_dao.updateTickets(oldFlight.getPl_ps() + 1, oldFlight.getPl_rid());

@@ -46,8 +46,7 @@ public class UserFunction {
 				System.out.println("输入有误请输入一个有效数字");
 				continue;
 			}
-
-			switch (item) {
+  			switch (item) {
 			case 1:
 				queryForPlace();
 				break;
@@ -101,7 +100,12 @@ public class UserFunction {
 			str = new MyScanner().getString();
 			date = DateUtil.parseDate(str, DateUtil.ACCURACY_PATTERN_DAY);
 			if (date != null) {
-				System.out.println(date);
+				//System.out.println(date);
+				if(p_dao.getDate(date).isEmpty())
+				{
+					System.out.println("抱歉未查询到");
+
+				}
 				flightservice.viewFlight(p_dao.getDate(date));
 				break;
 			}
@@ -182,6 +186,7 @@ public class UserFunction {
 						try {
 							// 改签 输入航班号 传参 订单实体
 							orderservice.update(pl_rid, order);
+							
 							System.out.println("改签成功");
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
@@ -223,46 +228,50 @@ public class UserFunction {
 		System.out.println(current.toString());
 		current.toString();
 		int item = 0;
-		do {
-			while (true) {
-				System.out.println("请输入你修改类别，只能修改1为密码或者2为手机号");
-				try {
-					item = new MyScanner().getInt();
-				} catch (Exception e) {
-					System.out.println("输入有误请输入一个有效数字");
-					continue;
-				}
 
-				switch (item) {
-				case 1:
-					System.out.print("请输入密码:");
-					String password = new MyScanner().getString();
-					System.out.print("确认密码:");
-					String password2 = new MyScanner().getString();
-					while (!password.equals(password2)) {
-						System.out.println("两次密码输入不一致!");
-						System.out.print("请输入密码:");
-						password = new MyScanner().getString();
-						System.out.print("确认密码:");
-						password2 = new MyScanner().getString();
-					}
-					current.setP_pwd(MD5.encode(password));
-					System.out.println(new UserDAOImpl().update(current));
-					break;
-				case 2:
-					System.out.print("请输入手机号:");
-					String tel = new MyScanner().getString();
-					if(Regular.IsTelephone(tel)) {
-						System.out.println("手机号码格式");
-					}
-					current.setP_number(tel);
-					System.out.println(new UserDAOImpl().update(current));
-					break;
-				default:
-					break;
-				}
+		do {
+			System.out.println("请输入你修改类别，只能修改1为密码或者2为手机号");
+			try {
+				item = new MyScanner().getInt();
+			} catch (Exception e) {
+				System.out.println("输入有误请输入一个有效数字");
+				continue;
 			}
 
+			switch (item) {
+			case 1:
+				System.out.print("请输入密码:");
+				String password = new MyScanner().getString();
+				System.out.print("确认密码:");
+				String password2 = new MyScanner().getString();
+				while (!password.equals(password2)) {
+					System.out.println("两次密码输入不一致!");
+					System.out.print("请输入密码:");
+					password = new MyScanner().getString();
+					System.out.print("确认密码:");
+					password2 = new MyScanner().getString();
+				}
+				current.setP_pwd(MD5.encode(password));
+				System.out.println(new UserDAOImpl().update(current));
+				break;
+			case 2:
+				while (true) {
+					System.out.print("请输入手机号:");
+					String tel = new MyScanner().getString();
+					//正则手机号
+					if (!Regular.IsHandset(tel)) {
+						System.out.println("手机号码格式不对");
+					} else {
+						current.setP_number(tel);
+						new UserDAOImpl().update(current);
+						break;
+					}
+				}
+				break;
+			default:
+				break;
+			}
+			System.out.println("y可以继续 其他键退出");
 		} while ("y".equalsIgnoreCase(new MyScanner().getString()));
 	}
 

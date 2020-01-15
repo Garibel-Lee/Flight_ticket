@@ -5,6 +5,7 @@ import com.lcqjoyce.service.UserLoginService;
 import com.lcqjoyce.service.impl.UserLoginServiceImpl;
 import com.lcqjoyce.utils.MD5;
 import com.lcqjoyce.utils.MyScanner;
+import com.lcqjoyce.utils.Regular;
 
 public class User_Client {
 	private ThreadLocal<User> threadLocal = new ThreadLocal<User>();
@@ -72,7 +73,16 @@ public class User_Client {
 				password2 = new MyScanner().getString();
 			}
 			user.setP_pwd(password);
-
+			while (true) {
+				System.out.println("请输入正确格式身份证!");
+				String identy = new MyScanner().getString();
+				if (!Regular.IsIDcard(identy)) {
+					continue;
+				}else{
+					user.setP_identy(identy);
+					break;
+				}
+			}
 			try {
 
 				userservice.Register(user);
@@ -122,8 +132,8 @@ public class User_Client {
 	private void UserSpace() {
 		User loginUser = threadLocal.get();
 		if (null != loginUser) {
-			System.out.println("==================欢迎使用航空购票系统==================");
-			System.out.println("当前登陆用户: " + loginUser.getP_name());
+			System.out.println("=========欢迎使用航空购票系统================");
+					System.out.println("当前登陆用户: " + loginUser.getP_name());
 			String flag = "y";
 			while ("y".equalsIgnoreCase(flag)) {
 				UserFunction UserFunction = new UserFunction(threadLocal);

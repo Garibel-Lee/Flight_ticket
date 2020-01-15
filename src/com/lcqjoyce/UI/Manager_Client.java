@@ -2,9 +2,7 @@ package com.lcqjoyce.UI;
 
 import com.lcqjoyce.domain.Manager;
 import com.lcqjoyce.service.ManagerService;
-import com.lcqjoyce.service.UserLoginService;
 import com.lcqjoyce.service.impl.ManagerServiceImpl;
-import com.lcqjoyce.service.impl.UserLoginServiceImpl;
 import com.lcqjoyce.utils.MD5;
 import com.lcqjoyce.utils.MyScanner;
 

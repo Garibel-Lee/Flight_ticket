@@ -1,31 +1,37 @@
 package com.lcqjoyce.UI;
 
-import java.text.ParseException;
-import java.util.Date;
-
 import com.lcqjoyce.dao.PlaneDAO;
-import com.lcqjoyce.dao.UserDAO;
 import com.lcqjoyce.dao.impl.PlaneDAOImpl;
-import com.lcqjoyce.dao.impl.UserDAOImpl;
 import com.lcqjoyce.domain.Manager;
 import com.lcqjoyce.domain.Plane;
 import com.lcqjoyce.service.FlightService;
-import com.lcqjoyce.service.OrderService;
 import com.lcqjoyce.service.impl.FlightServiceImpl;
-import com.lcqjoyce.service.impl.OrderServiceImpl;
 import com.lcqjoyce.utils.DateUtil;
 import com.lcqjoyce.utils.MyScanner;
 
+import java.text.ParseException;
+import java.util.Date;
+
 public class ManagerFunction {
+	/**
+	 * note 管理主頁調用了 登錄的管理信息 保证了当前管理者的信息
+	 * 采用前后端分离避免 threadlocal作用域问题
+	 */
+	@SuppressWarnings("unused")
 	private ThreadLocal<Manager> threadLocal = new ThreadLocal<Manager>();
 	private FlightService flightservice = new FlightServiceImpl();
 	private PlaneDAO p_dao = new PlaneDAOImpl();
 
+	/**
+	 * 仿spring的管理方式绑定资源到当前线程
+	 * 
+	 * @param threadLocal
+	 */
 	public ManagerFunction(ThreadLocal<Manager> threadLocal) {
 		this.threadLocal = threadLocal;
 	}
 
-	// 查询航班
+	// 查询航班的主页
 	public void queryForFlightInfo() {
 		flightservice.viewFlight(p_dao.list());
 
@@ -59,7 +65,7 @@ public class ManagerFunction {
 		} while ("y".equalsIgnoreCase(new MyScanner().getString()));
 	}
 
-	// 航班号查询
+	// 查询之航班号查询
 	public void queryForFlightNumber() {
 
 		int item = 0;
@@ -78,7 +84,7 @@ public class ManagerFunction {
 
 	}
 
-	// 地点模糊查询 sql语句拼接
+	// 查询之地点模糊查询 sql语句拼接
 	public void queryForPlace() {
 		System.out.println("请输入城市，进行地点模糊查询");
 		String str = new MyScanner().getString();
@@ -86,7 +92,7 @@ public class ManagerFunction {
 
 	}
 
-	// 日期固定格式查询
+	// 查询之日期固定格式查询
 	public void queryForDate() {
 		Date date;
 		String str;
@@ -102,6 +108,7 @@ public class ManagerFunction {
 		}
 	}
 
+	// 添加航班
 	public void addFlight() {
 		Plane plane = new Plane();
 
@@ -176,9 +183,14 @@ public class ManagerFunction {
 			}
 		}
 		int result = p_dao.save(plane);
-		System.out.println(result);
+		if(1==result) {
+			System.out.println("保存航班成功");
+		}else {
+			System.out.println("保存航班失败");
+		}
 	}
 
+	// 更新航班
 	public void updateFlight() {
 		Plane plane = new Plane();
 		while (true) {
@@ -189,6 +201,8 @@ public class ManagerFunction {
 				plane = flightservice.getFlightRID(item);
 				if (plane.getPl_id() != null) {
 					break;
+				}else {
+					System.out.println("不存在该航班号,请重新输入");
 				}
 
 			} catch (Exception e) {
@@ -204,15 +218,16 @@ public class ManagerFunction {
 
 			str = new MyScanner().getString();
 			sdate = DateUtil.parseDate(str, "yyyyMMddHHmm");
-			if (sdate != null) {
+			if (sdate != null && new Date().before(sdate)&&DateUtil.isValidDate(str) ) {
 				try {
 					plane.setPl_rst(sdate);
 				} catch (ParseException e) {
-					System.out.println("请输入正确日期格式yyyyMMddHHmm");
+					System.out.println("请输入正确大于当前时间的日期格式yyyyMMddHHmm");
 					continue;
 				}
 				break;
-			}
+			}else
+				System.out.println("请输入正确大当前时间的日期格式yyyyMMddHHmm");
 		}
 
 		System.out.println("请输入降落时间yyyyMMddHHmm");
@@ -221,21 +236,26 @@ public class ManagerFunction {
 		while (true) {
 			estr = new MyScanner().getString();
 			edate = DateUtil.parseDate(estr, "yyyyMMddHHmm");
-			if (sdate != null) {
+			if (sdate != null && sdate.before(edate) && DateUtil.isValidDate(str)) {
 				try {
 					plane.setPl_ret(edate);
 				} catch (ParseException e) {
-					System.out.println("请输入正确日期格式yyyyMMddHHmm");
+					System.out.println("请输入正确大于起飞时间的日期格式yyyyMMddHHmm");
 					continue;
 				}
 				break;
-			}
+			}else
+				System.out.println("请输入正确大于起飞时间的日期格式yyyyMMddHHmm");
 		}
 		int result = p_dao.update(plane);
-		System.out.println(result);
+		if(1==result) {
+			System.out.println("起飞降落时间修改成功");
+		}else {
+			System.out.println("起飞降落时间修改失败");
+		}
 
 	}
-
+	// 刪除航班
 	public void deleteFlight() {
 		Plane plane = new Plane();
 		while (true) {
@@ -255,15 +275,11 @@ public class ManagerFunction {
 		}
 
 		int result = p_dao.delete(plane.getPl_rid());
-		System.out.println(result);
+		if(1==result) {
+			System.out.println("删除航班成功");
+		}else {
+			System.out.println("删除航班失败");
+		}
 
 	}
-
-	/**
-	 * 不用写了已经y
-	 */
-	public static void getFlight() {
-
-	}
-
 }

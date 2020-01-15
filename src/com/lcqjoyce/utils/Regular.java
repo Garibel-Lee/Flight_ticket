@@ -89,18 +89,18 @@ public final class Regular {
 	 * @return 如果是符合格式的字符串,返回 <b>true </b>,否则为 <b>false </b>
 	 */
 	public static boolean IsHandset(String str) {
-		String regex = "^[1]+[3,5]+\\d{9}$";
+		String regex = "^1((3[\\d])|(4[5,6,9])|(5[0-3,5-9])|(6[5-7])|(7[0-8])|(8[1-3,5-8])|(9[1,8,9]))\\d{8}$";
 		return match(regex, str);
 	}
 
 	/**
 	 * 验证输入身份证号
-	 *
+	 * //
 	 * @param 待验证的字符串
 	 * @return 如果是符合格式的字符串,返回 <b>true </b>,否则为 <b>false </b>
 	 */
 	public static boolean IsIDcard(String str) {
-		String regex = "(^\\d{18}$)|(^\\d{15}$)";
+		String regex = "^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$|^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";
 		return match(regex, str);
 	}
 

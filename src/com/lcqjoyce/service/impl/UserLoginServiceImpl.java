@@ -17,10 +17,11 @@ public class UserLoginServiceImpl implements UserLoginService {
 		// 注册第一步检测用户名是否存在
 		User user = new User();
 		user = o_user.getByName(obj.getP_name());
-		if (null == user) {
+		if (null == user.getP_id()) {
 			User us=new User();
 			// 不存在保存对象 进行插入
 			us.setP_name(obj.getP_name());
+			us.setP_identy(obj.getP_identy());
 			us.setP_pwd(MD5.encode(obj.getP_pwd()));
 			o_user.save(us);
 		}else
@@ -60,10 +61,10 @@ public class UserLoginServiceImpl implements UserLoginService {
 
 		if (!currentUser.getP_pwd().equals(User.getP_pwd())) {
 			
-			System.out.println("密码不对当前剩余次数"+currentUser.getP_resudie());			
+//			System.out.println("密码不对当前剩余次数"+(currentUser.getP_resudie()-1));			
 			currentUser.setP_resudie(currentUser.getP_resudie() - 1);
 			// 更新账户状态
-			System.out.println("updateLock更新影响行数"+o_user.updateLock(currentUser));
+//			System.out.println("updateLock更新影响行数"+o_user.updateLock(currentUser));
 			// 检查登陆失败次数,在第三次错误后就锁上
 			if (currentUser.getP_resudie() <= 0) {
 				// 次数用完

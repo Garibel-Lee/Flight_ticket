@@ -1,6 +1,5 @@
 package com.lcqjoyce.utils;
 
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -960,6 +959,16 @@ public class DateUtil {
 		return (int) (System.currentTimeMillis() / 1000);
 	}
 
+	public static boolean isValidDate(String str) {
+		DateFormat formatter = new SimpleDateFormat("yyyyMMddHHmm"); // 这里的时间格式根据自己需求更改（注意：格式区分大小写、格式区分大小写、格式区分大小写）
+		try {
+			Date date = (Date) formatter.parse(str);
+			return str.equals(formatter.format(date));
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	/**
 	 * 通过时间戳返回string类型的时间格式
 	 * 
@@ -1008,7 +1017,7 @@ public class DateUtil {
 	public static Date endOfDaySecond(Date d) {
 		return DateUtils.addSeconds(DateUtils.addDays(DateUtils.truncate(d, Calendar.DATE), 1), -1);
 	}
-	
+
 	/**
 	 * 得到一天的第一秒钟
 	 * 
@@ -1018,10 +1027,9 @@ public class DateUtil {
 	public static Date beginOfDaySecond(Date d) {
 		return DateUtils.addSeconds(DateUtils.addDays(DateUtils.truncate(d, Calendar.DATE), 0), 0);
 	}
+
 	public static int getTimestampByDate(Date time) {
 		return (int) (time.getTime() / 1000);
 	}
 
-
-	
 }

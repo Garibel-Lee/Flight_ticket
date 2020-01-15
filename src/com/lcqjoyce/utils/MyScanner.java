@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class MyScanner {
-	Scanner sc = new Scanner(System.in);
+	
 
 	public String getString() {
 		BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
@@ -21,13 +21,19 @@ public class MyScanner {
 		return str;
 	}
 
+	@SuppressWarnings("resource")
 	public int getInt() {
-		try {
-			int number = sc.nextInt();
-			return number;
-		} finally {
-
+		int number;
+		while (true) {
+			try {
+				number= new Scanner(System.in).nextInt();
+				break;				
+			} catch (Exception e) {
+				System.out.println("输入数字有误，请重新输入");
+				continue;
+			}
 		}
-
+		return number;
 	}
+	
 }

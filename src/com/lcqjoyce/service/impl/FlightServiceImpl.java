@@ -31,10 +31,9 @@ public class FlightServiceImpl implements FlightService {
 	}
 	
 	
-	
+	//效果不行在下面重新构思
 	public List<Plane> getNoTakeofflist(Order order ) {
 		//查詢航班都是當前的為起飛的
-
 		List<Plane> list=p_dao.getDate(DateUtil.transDateFormat(new Date(), DateUtil.ACCURACY_PATTERN_DAY));
 		Iterator<Plane> iterator = list.iterator();
 		while (iterator.hasNext()) {
@@ -54,7 +53,7 @@ public class FlightServiceImpl implements FlightService {
 	public void viewFlight(List<Plane> list) {
 		
 		for (Plane ps : list) {
-
+			if(ps.getPl_rst().after(new Date())) {
 			System.out.print("航班号  ：" + ps.getPl_rid()+"\t");
 			System.out.print("起点     ：" + ps.getPl_rsp()+"\t");
 			System.out.print("终点    	： " + ps.getPl_rep()+"\t");
@@ -64,7 +63,10 @@ public class FlightServiceImpl implements FlightService {
 			System.out.print("经济舱价格	：" + ps.getR_dprice()+"\t");
 			System.out.print("公务舱价格	：" + ps.getR_yprice()+"\t");
 			System.out.println("头等舱价格	：" + ps.getR_fprice()+"\t");
-			
+			}else {
+				System.out.println("一个过期航班未显示");
+				continue;
+			}
 		}
 	}
 
